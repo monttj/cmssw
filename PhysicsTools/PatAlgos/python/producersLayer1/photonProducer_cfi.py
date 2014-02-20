@@ -3,7 +3,13 @@ import FWCore.ParameterSet.Config as cms
 patPhotons = cms.EDProducer("PATPhotonProducer",
     # input collection
     photonSource = cms.InputTag("gedPhotons"),
-                                 
+
+    beamLineSrc = cms.InputTag("offlineBeamSpot"),
+
+    # collections for mva input variables
+    reducedBarrelRecHitCollection = cms.InputTag("reducedEcalRecHitsEB"),
+    reducedEndcapRecHitCollection = cms.InputTag("reducedEcalRecHitsEE"),
+
     # user data to add
     userData = cms.PSet(
       # add custom classes here
