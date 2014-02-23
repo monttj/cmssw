@@ -11,11 +11,11 @@
 namespace {
   struct PATLite_AnalysisDataFormats {
 
-    patlite::Photon p_;
-    std::vector<patlite::Photon> pv;
-    edm::Wrapper<patlite::Photon> pe;
-    edm::Wrapper<std::vector<patlite::Photon> > ppv;
-    edm::Ptr<patlite::Photon> pPtr;
+    lite::Photon p_;
+    std::vector<lite::Photon> pv;
+    edm::Wrapper<lite::Photon> pe;
+    edm::Wrapper<std::vector<lite::Photon> > ppv;
+    edm::Ptr<lite::Photon> pPtr;
 
   };
   

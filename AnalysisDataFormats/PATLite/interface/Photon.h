@@ -7,14 +7,14 @@
 
 
 // Define typedefs for convenience
-namespace patlite {
+namespace lite {
   class Photon;
-  typedef std::vector<patlite::Photon>              PhotonCollection;
+  typedef std::vector<Photon>              PhotonCollection;
   typedef edm::Ref<PhotonCollection>       PhotonRef;
   typedef edm::RefVector<PhotonCollection> PhotonRefVector;
 }
 
-namespace patlite{
+namespace lite {
 
   typedef reco::Candidate::LorentzVector LorentzVector;
 

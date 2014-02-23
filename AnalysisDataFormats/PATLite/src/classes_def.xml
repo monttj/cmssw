@@ -1,9 +1,9 @@
 <lcgdict>
 
-  <class name="patlite::Photon"/>
-  <class name="std::vector<patlite::Photon>"/>
-  <class name="edm::Wrapper<patlite::Photon>"/>
-  <class name="edm::Wrapper<std::vector<patlite::Photon> >"/>
-  <class name="edm::Ptr<patlite::Photon>"/>
+  <class name="lite::Photon"/>
+  <class name="std::vector<lite::Photon>"/>
+  <class name="edm::Wrapper<lite::Photon>"/>
+  <class name="edm::Wrapper<std::vector<lite::Photon> >"/>
+  <class name="edm::Ptr<lite::Photon>"/>
 
 </lcgdict>
