@@ -3,6 +3,7 @@
 
 #include "DataFormats/Candidate/interface/CandidateFwd.h"
 #include "DataFormats/Candidate/interface/Candidate.h"
+#include "AnalysisDataFormats/PATLite/interface/Particle.h"
 #include "DataFormats/PatCandidates/interface/Photon.h"
 
 
@@ -16,18 +17,33 @@ namespace lite {
 
 namespace lite {
 
-  typedef reco::Candidate::LorentzVector LorentzVector;
-
-  class Photon : public LorentzVector{
+  class Photon : public Particle{
   public:
     Photon();
     Photon(const pat::Photon & aPhoton); 
     virtual ~Photon();
 
-    double test() const { return test_; }
-    
+    double chargedHadronIso() const { return chargedHadronIso_; }
+    double puChargedHadronIso() const { return puChargedHadronIso_; }
+    double neutralHadronIso() const { return neutralHadronIso_; }
+    double photonIso() const { return photonIso_; }
+    double hadronicOverEm() const { return hadronicOverEm_; }
+    double sigmaIetaIeta() const { return sigmaIetaIeta_; }
+  
+    bool passElectronVeto() const { return passElectronVeto_; }
+    bool hasPixelSeed() const { return hasPixelSeed_; } 
+  
   private:
-    double test_;
+    double chargedHadronIso_;
+    double puChargedHadronIso_;
+    double neutralHadronIso_;
+    double photonIso_;
+    double hadronicOverEm_;
+    double sigmaIetaIeta_;
+  
+    bool passElectronVeto_;
+    bool hasPixelSeed_;
+
   };
 }
 

@@ -1,5 +1,11 @@
 <lcgdict>
 
+  <class name="lite::Particle"/>
+  <class name="std::vector<lite::Particle>"/>
+  <class name="edm::Wrapper<lite::Particle>"/>
+  <class name="edm::Wrapper<std::vector<lite::Particle> >"/>
+  <class name="edm::Ptr<lite::Particle>"/>
+
   <class name="lite::Photon"/>
   <class name="std::vector<lite::Photon>"/>
   <class name="edm::Wrapper<lite::Photon>"/>
