@@ -40,7 +40,6 @@ namespace reco {
 // Class definition
 namespace pat {
 
-
   class Photon : public PATObject<reco::Photon> {
 
     public:
@@ -271,6 +270,7 @@ namespace pat {
       float iEta() const { return iEta_;}
       void setIEta( float i ){ iEta_ = i;}
 
+      void CL() { eMax_ = 0 ; }
       /// pipe operator (introduced to use pat::Photon with PFTopProjectors)
       friend std::ostream& reco::operator<<(std::ostream& out, const pat::Photon& obj);
 

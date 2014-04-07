@@ -3,6 +3,7 @@ import FWCore.ParameterSet.Config as cms
 from PhysicsTools.PatAlgos.mcMatchLayer0.electronMatch_cfi import *
 from TrackingTools.TransientTrack.TransientTrackBuilder_cfi import *
 from PhysicsTools.PatAlgos.producersLayer1.electronProducer_cfi import *
+from PhysicsTools.PatAlgos.producersLayer1.liteElectronProducer_cfi import *
 
 from PhysicsTools.PatAlgos.recoLayer0.pfParticleSelectionForIso_cff import *
 from CommonTools.ParticleFlow.Isolation.pfElectronIsolation_cff import *
@@ -44,5 +45,6 @@ makePatElectrons = cms.Sequence(
     pfParticleSelectionForIsoSequence *
     pfElectronIsolationSequence *
     electronMatch *
-    patElectrons
+    patElectrons *
+    patLiteElectrons 
     )

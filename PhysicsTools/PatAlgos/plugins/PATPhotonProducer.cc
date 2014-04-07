@@ -92,6 +92,7 @@ PATPhotonProducer::PATPhotonProducer(const edm::ParameterSet & iConfig) :
   }
   // produces vector of photons
   produces<std::vector<Photon> >();
+  //produces<std::vector<patlite::Photon> >();
 
   // read isoDeposit labels, for direct embedding
   readIsolationLabels(iConfig, "isoDeposits", isoDepositLabels_, isoDepositTokens_);
@@ -258,9 +259,9 @@ void PATPhotonProducer::produce(edm::Event & iEvent, const edm::EventSetup & iSe
     memset(subClusDEta,0,3*sizeof(float));
     size_t iclus=0;
     for( auto clus = photonRef->superCluster()->clustersBegin()+1; clus != photonRef->superCluster()->clustersEnd(); ++clus ) {
-      const float this_deta = (*clus)->eta() - photonRef->superCluster()->seed()->eta();
-      const float this_dphi = TVector2::Phi_mpi_pi((*clus)->phi() - photonRef->superCluster()->seed()->phi());
-      const float this_dr = std::hypot(this_deta,this_dphi);
+      float this_deta = (*clus)->eta() - photonRef->superCluster()->seed()->eta();
+      float this_dphi = TVector2::Phi_mpi_pi((*clus)->phi() - photonRef->superCluster()->seed()->phi());
+      float this_dr = std::hypot(this_deta,this_dphi);
       if(this_dr > maxDR || maxDR == 999.0f) {
         maxDR = this_dr;
         maxDRDEta = this_deta;
@@ -295,16 +296,16 @@ void PATPhotonProducer::produce(edm::Event & iEvent, const edm::EventSetup & iSe
      throw cms::Exception("PFECALSuperClusterProducer::calculateRegressedEnergy") << "Supercluster seed is either EB nor EE!" << std::endl;
     }
 
-    const float eMax = EcalClusterTools::eMax( *photonRef->superCluster()->seed(), &*rechitsH );
-    const float e2nd = EcalClusterTools::e2nd( *photonRef->superCluster()->seed(), &*rechitsH );
-    const float e3x3 = EcalClusterTools::e3x3( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
-    const float eTop = EcalClusterTools::eTop( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
-    const float eBottom = EcalClusterTools::eBottom( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
-    const float eLeft = EcalClusterTools::eLeft( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
-    const float eRight = EcalClusterTools::eRight( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
+    float eMax = EcalClusterTools::eMax( *photonRef->superCluster()->seed(), &*rechitsH );
+    float e2nd = EcalClusterTools::e2nd( *photonRef->superCluster()->seed(), &*rechitsH );
+    float e3x3 = EcalClusterTools::e3x3( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
+    float eTop = EcalClusterTools::eTop( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
+    float eBottom = EcalClusterTools::eBottom( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
+    float eLeft = EcalClusterTools::eLeft( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
+    float eRight = EcalClusterTools::eRight( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
     std::vector<float> vCov = EcalClusterTools::localCovariances( *photonRef->superCluster()->seed(), &*rechitsH, ecalTopology_ );
-    const float see = (isnan(vCov[0]) ? 0. : sqrt(vCov[0]));
-    const float spp = (isnan(vCov[2]) ? 0. : sqrt(vCov[2]));
+    float see = (isnan(vCov[0]) ? 0. : sqrt(vCov[0]));
+    float spp = (isnan(vCov[2]) ? 0. : sqrt(vCov[2]));
     float sep = 0.;
     if (see*spp > 0)
       sep = vCov[1] / (see * spp);
@@ -313,8 +314,12 @@ void PATPhotonProducer::produce(edm::Event & iEvent, const edm::EventSetup & iSe
     else
       sep = -1.0;
 
+    std::cout << eMax << e2nd << e3x3 << eTop << eBottom << eLeft << eRight << see << spp << sep << maxDR << maxDRDPhi << maxDRDEta << maxDRRawEnergy << cryPhi << cryEta << iphi << ieta << std::endl;
     // set input variables for regression energy correction 
-    aPhoton.setEMax( eMax );
+    /*
+    aPhoton.CL() ;
+    std::cout << "emax= " << eMax << std::endl;
+    //aPhoton.setEMax( eMax );
     aPhoton.setE2nd( e2nd );
     aPhoton.setE3x3( e3x3 );
     aPhoton.setETop( eTop );
@@ -343,7 +348,7 @@ void PATPhotonProducer::produce(edm::Event & iEvent, const edm::EventSetup & iSe
     aPhoton.setCryEta( cryEta );
     aPhoton.setIEta( ieta );
     aPhoton.setIPhi( iphi ); 
-
+    */
     // add the Photon to the vector of Photons
     PATPhotons->push_back(aPhoton);
   }
@@ -354,6 +359,7 @@ void PATPhotonProducer::produce(edm::Event & iEvent, const edm::EventSetup & iSe
   // put genEvt object in Event
   std::auto_ptr<std::vector<Photon> > myPhotons(PATPhotons);
   iEvent.put(myPhotons);
+
   if (isolator_.enabled()) isolator_.endEvent();
 
 }

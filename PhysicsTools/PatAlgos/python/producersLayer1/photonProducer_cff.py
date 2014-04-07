@@ -2,6 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 from PhysicsTools.PatAlgos.mcMatchLayer0.photonMatch_cfi import *
 from PhysicsTools.PatAlgos.producersLayer1.photonProducer_cfi import *
+from PhysicsTools.PatAlgos.producersLayer1.litePhotonProducer_cfi import *
 
 from PhysicsTools.PatAlgos.recoLayer0.pfParticleSelectionForIso_cff import *
 from CommonTools.ParticleFlow.Isolation.pfPhotonIsolation_cff import *
@@ -35,5 +36,6 @@ makePatPhotons = cms.Sequence(
     pfParticleSelectionForIsoSequence *
     pfPhotonIsolationSequence *
     photonMatch *
-    patPhotons
+    patPhotons *
+    patLitePhotons
     )

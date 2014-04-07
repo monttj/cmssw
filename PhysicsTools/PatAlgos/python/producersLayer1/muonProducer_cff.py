@@ -3,6 +3,7 @@ import FWCore.ParameterSet.Config as cms
 from PhysicsTools.PatAlgos.mcMatchLayer0.muonMatch_cfi import *
 from TrackingTools.TransientTrack.TransientTrackBuilder_cfi import *
 from PhysicsTools.PatAlgos.producersLayer1.muonProducer_cfi import *
+from PhysicsTools.PatAlgos.producersLayer1.liteMuonProducer_cfi import *
 
 from PhysicsTools.PatAlgos.recoLayer0.pfParticleSelectionForIso_cff import *
 from CommonTools.ParticleFlow.Isolation.pfMuonIsolation_cff import *
@@ -36,5 +37,6 @@ makePatMuons = cms.Sequence(
     pfParticleSelectionForIsoSequence *
     pfMuonIsolationSequence *
     muonMatch *
-    patMuons
+    patMuons *
+    patLiteMuons 
     )

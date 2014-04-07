@@ -6,6 +6,18 @@
   <class name="edm::Wrapper<std::vector<lite::Particle> >"/>
   <class name="edm::Ptr<lite::Particle>"/>
 
+  <class name="lite::Muon"/>
+  <class name="std::vector<lite::Muon>"/>
+  <class name="edm::Wrapper<lite::Muon>"/>
+  <class name="edm::Wrapper<std::vector<lite::Muon> >"/>
+  <class name="edm::Ptr<lite::Muon>"/>
+
+  <class name="lite::Electron"/>
+  <class name="std::vector<lite::Electron>"/>
+  <class name="edm::Wrapper<lite::Electron>"/>
+  <class name="edm::Wrapper<std::vector<lite::Electron> >"/>
+  <class name="edm::Ptr<lite::Electron>"/>
+
   <class name="lite::Photon"/>
   <class name="std::vector<lite::Photon>"/>
   <class name="edm::Wrapper<lite::Photon>"/>

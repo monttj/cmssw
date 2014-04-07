@@ -1,13 +1,15 @@
 #include "AnalysisDataFormats/PATLite/interface/Particle.h"
 
+using namespace lite;
+
 /// default constructor
-lite::Particle::Particle() {
+Particle::Particle(){
 }
 
-lite::Particle::Particle(const pat::Particle & aParticle) {
+Particle::Particle(const LorentzVector & aParticle) : LorentzVector(aParticle) {
 }
 
 /// destructor
-lite::Particle::~Particle() {
+Particle::~Particle() {
 }
 

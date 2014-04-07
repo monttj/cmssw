@@ -21,7 +21,7 @@ namespace lite {
   class Particle : public LorentzVector{
   public:
     Particle();
-    Particle(const pat::Particle & aParticle); 
+    Particle(const LorentzVector & aParticle); 
     virtual ~Particle();
     
   private:

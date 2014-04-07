@@ -1,10 +1,12 @@
 #include "AnalysisDataFormats/PATLite/interface/Photon.h"
 
+using namespace lite;
+
 /// default constructor
-lite::Photon::Photon() {
+Photon::Photon() {
 }
 
-lite::Photon::Photon(const pat::Photon & aPhoton) {
+Photon::Photon(const pat::Photon & aPhoton) : Particle( aPhoton.p4() ) {
   chargedHadronIso_ = aPhoton.chargedHadronIso();
   puChargedHadronIso_ = aPhoton.puChargedHadronIso();
   neutralHadronIso_ = aPhoton.neutralHadronIso();
@@ -17,6 +19,6 @@ lite::Photon::Photon(const pat::Photon & aPhoton) {
 }
 
 /// destructor
-lite::Photon::~Photon() {
+Photon::~Photon() {
 }
 

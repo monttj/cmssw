@@ -10,7 +10,8 @@ using pat::Photon;
 /// default constructor
 Photon::Photon() :
     PATObject<reco::Photon>(reco::Photon()),
-    embeddedSuperCluster_(false),
+    embeddedSuperCluster_(false)
+/*
     passElectronVeto_(false),
     hasPixelSeed_(false),
     seedEnergy_(0.0),
@@ -41,12 +42,14 @@ Photon::Photon() :
     cryPhi_(-999),
     iEta_(-999),
     iPhi_(-999)
+*/
 {
 }
 
 /// constructor from reco::Photon
 Photon::Photon(const reco::Photon & aPhoton) :
-    PATObject<reco::Photon>(aPhoton),
+    PATObject<reco::Photon>(aPhoton)
+/*
     embeddedSuperCluster_(false),
     passElectronVeto_(false),
     hasPixelSeed_(false),
@@ -78,12 +81,14 @@ Photon::Photon(const reco::Photon & aPhoton) :
     cryPhi_(-999),
     iEta_(-999),
     iPhi_(-999)
+*/
 {
 }
 
 /// constructor from ref to reco::Photon
 Photon::Photon(const edm::RefToBase<reco::Photon> & aPhotonRef) :
-    PATObject<reco::Photon>(aPhotonRef),
+    PATObject<reco::Photon>(aPhotonRef)
+/*
     embeddedSuperCluster_(false),
     passElectronVeto_(false),
     hasPixelSeed_(false),
@@ -115,12 +120,14 @@ Photon::Photon(const edm::RefToBase<reco::Photon> & aPhotonRef) :
     cryPhi_(-999),
     iEta_(-999),
     iPhi_(-999)
+*/
 {
 }
 
 /// constructor from ref to reco::Photon
 Photon::Photon(const edm::Ptr<reco::Photon> & aPhotonRef) :
-    PATObject<reco::Photon>(aPhotonRef),
+    PATObject<reco::Photon>(aPhotonRef)
+/*
     embeddedSuperCluster_(false),
     passElectronVeto_(false),
     hasPixelSeed_(false),
@@ -152,6 +159,7 @@ Photon::Photon(const edm::Ptr<reco::Photon> & aPhotonRef) :
     cryPhi_(-999),
     iEta_(-999),
     iPhi_(-999)
+*/
 {
 }
 
